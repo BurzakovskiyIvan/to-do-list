@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
   tasks = [
-    /* {
+    {
       id: 1,
       name: 'first task',
       endDate: '9/4/2019',
@@ -18,7 +18,7 @@ export class TaskListComponent implements OnInit {
       name: 'second task',
       endDate: '9/27/2019',
       priority: 'Minor'
-    } */
+    }
   ];
 
   constructor() { }
