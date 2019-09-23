@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ToDoListRoutingModule } from './to-do-list-routing.module';
 import { ToDoPageComponent } from './components/to-do-page/to-do-page.component';
 import { ToDoFormComponent } from './components/to-do-form/to-do-form.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
   imports: [
@@ -27,7 +29,9 @@ import { ToDoFormComponent } from './components/to-do-form/to-do-form.component'
   ],
   declarations: [
     ToDoPageComponent,
-    ToDoFormComponent
+    ToDoFormComponent,
+    TaskListComponent,
+    TaskComponent
   ],
   exports: [
     ToDoPageComponent
