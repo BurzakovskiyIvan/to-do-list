@@ -13,6 +13,7 @@ import { ToDoPageComponent } from './components/to-do-page/to-do-page.component'
 import { ToDoFormComponent } from './components/to-do-form/to-do-form.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskComponent } from './components/task/task.component';
+import { TasksService } from './services/tasks.service';
 
 @NgModule({
   imports: [
@@ -36,7 +37,9 @@ import { TaskComponent } from './components/task/task.component';
   exports: [
     ToDoPageComponent
   ],
-  providers: [],
+  providers: [
+    TasksService
+  ],
 })
 
 export class ToDoListModule {}

@@ -1,10 +1,10 @@
-<div id="taskWrapper">
+<div id="taskWrapper" *ngFor="let task of tasks">
   <div id="priorityBlock">
-    <p id="priorityValue">Critical</p>
+    <p id="priorityValue">{{ task.priority }}</p>
   </div>
 
   <div id="mainTaskBlock">
-    <p id="taskName">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-    <p id="taskDeadline">10/15/2019</p>
+    <p id="taskName">{{ task.description }}</p>
+    <p id="taskDeadline">{{ task.endDate }}</p>
   </div>
 </div>
