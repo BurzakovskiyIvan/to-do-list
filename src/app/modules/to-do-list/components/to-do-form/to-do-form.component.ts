@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PriorityService } from '../../services/priority.service';
 
 @Component({
   selector: 'app-to-do-form',
@@ -6,16 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./to-do-form.component.sass']
 })
 export class ToDoFormComponent implements OnInit {
-  priorities = [
-    'Critical',
-    'Major',
-    'Minor',
-    'Trivial'
-  ];
+  priorities = [];
 
-  constructor() { }
+  constructor(private priorityService: PriorityService) { }
 
   ngOnInit() {
+    this.priorities = this.priorityService.getPriorities();
   }
 
 }
