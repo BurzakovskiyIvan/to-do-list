@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TasksService } from '../../services/tasks.service';
 import { PriorityService } from '../../services/priority.service';
+import { TasksService } from '../../services/tasks.service';
+import { Task } from '../../task';
 
 @Component({
   selector: 'app-task',
@@ -10,15 +11,19 @@ import { PriorityService } from '../../services/priority.service';
 
 export class TaskComponent implements OnInit {
 
-  tasks = [];
+  tasks: Task[];
   getPriorityColor: (priority: string) => string;
 
-  constructor(private tasksService: TasksService, private priorityService: PriorityService) {
+  constructor(private priorityService: PriorityService, private tasksService: TasksService) {
   }
 
   ngOnInit() {
-    this.tasks = this.tasksService.getTasks();
+    this.getTasks();
     this.getPriorityColor = this.priorityService.getPriorityColor.bind(this.priorityService);
+  }
+
+  getTasks(): void {
+    this.tasks = this.tasksService.getTasks();
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PriorityService } from '../../services/priority.service';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-to-do-form',
@@ -8,11 +9,13 @@ import { PriorityService } from '../../services/priority.service';
 })
 export class ToDoFormComponent implements OnInit {
   priorities = [];
+  onAddTask: () => any;
 
-  constructor(private priorityService: PriorityService) { }
+  constructor(private priorityService: PriorityService, private taskService: TasksService) { }
 
   ngOnInit() {
     this.priorities = this.priorityService.getPriorities();
+    this.onAddTask = this.taskService.addTask.bind(this.taskService);
   }
 
 }

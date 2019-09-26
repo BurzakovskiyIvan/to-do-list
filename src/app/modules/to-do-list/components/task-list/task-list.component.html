@@ -1,5 +1,5 @@
 <h4>My tasks:</h4>
 
-<div id="taskListWrapper" *ngIf="tasks.length > 0; then TaskExist else NoTasks"></div>
-<ng-template #TaskExist><app-task></app-task></ng-template>
+<div id="taskListWrapper" *ngIf="tasks.length > 0; then TasksExist else NoTasks"></div>
+<ng-template #TasksExist><app-task></app-task></ng-template>
 <ng-template #NoTasks><p id="noTaskPlaceholder">There is no any task yet</p></ng-template>

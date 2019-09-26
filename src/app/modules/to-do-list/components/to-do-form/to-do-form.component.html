@@ -1,13 +1,13 @@
 <!-- Input for a new task -->
 <mat-form-field>
-  <input matInput placeholder="Type your task"/>
+  <input matInput placeholder="Type your task" id="taskDescriptionField" required/>
 </mat-form-field>
 
 <br>
 
 <!-- Calendar -->
 <mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose the end date">
+  <input matInput [matDatepicker]="picker" placeholder="Choose the end date" id="endDatePicker" required>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
@@ -17,7 +17,7 @@
 <!-- Priority dropdown -->
 <mat-form-field>
   <mat-label>Priority</mat-label>
-  <mat-select>
+  <mat-select id="prioritySelector" required>
     <mat-option *ngFor="let priority of priorities" [value]="priority">
       {{ priority.name }}
     </mat-option>
@@ -27,5 +27,5 @@
 <br>
 
 <!-- Buttons -->
-<button mat-raised-button color="primary">Add</button>
+<button mat-raised-button color="primary" (click)="onAddTask()">Add</button>
 <button mat-raised-button color="warn">Clear</button>
