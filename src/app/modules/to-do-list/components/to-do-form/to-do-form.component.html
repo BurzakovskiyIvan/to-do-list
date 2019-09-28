@@ -1,31 +1,35 @@
-<!-- Input for a new task -->
-<mat-form-field>
-  <input matInput placeholder="Type your task" id="taskDescriptionField" required/>
-</mat-form-field>
+<form [formGroup]="rForm">
 
-<br>
+  <!-- Input for a new task -->
+  <mat-form-field>
+    <input matInput placeholder="Type your task" formControlName="description" required/>
+  </mat-form-field>
 
-<!-- Calendar -->
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose the end date" id="endDatePicker" required>
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+  <br>
 
-<br>
+  <!-- Calendar -->
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose the end date" formControlName="endDate" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-<!-- Priority dropdown -->
-<mat-form-field>
-  <mat-label>Priority</mat-label>
-  <mat-select id="prioritySelector" required>
-    <mat-option *ngFor="let priority of priorities" [value]="priority">
-      {{ priority.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+  <br>
 
-<br>
+  <!-- Priority dropdown -->
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select id="prioritySelector" formControlName="priority" required>
+      <mat-option *ngFor="let priority of priorities" [value]="priority.name">
+        {{ priority.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<!-- Buttons -->
-<button mat-raised-button color="primary" (click)="onAddTask()">Add</button>
-<button mat-raised-button color="warn">Clear</button>
+  <br>
+
+  <!-- Buttons -->
+  <button mat-raised-button color="primary" (click)="onAddTask(rForm.value)" [disabled]="!rForm.valid">Add</button>
+  <button mat-raised-button color="warn" (click)="onClearTasks()">Clear</button>
+
+</form>
