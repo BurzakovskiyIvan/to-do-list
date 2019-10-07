@@ -1,31 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../task';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+const TASKS_LOCAL_STORAGE_KEY = 'tasks';
 
 @Injectable()
-
 export class TasksService {
-  index = 0;
-  tasksData: Task[] = [];
-  storage = window.localStorage;
+  public tasks$: Observable<Task[]>;
+  private tasksBehaviorSubject$: BehaviorSubject<Task[]>;
+
+  private winRef: Window = window;
 
   constructor() {
-    for (const task of Object.values(this.storage)) {
-      this.tasksData.push(JSON.parse(task));
-    }
+    this.tasksBehaviorSubject$ = new BehaviorSubject<Task[]>(this.readLocalStorage() || []);
+    this.tasks$ = this.tasksBehaviorSubject$.asObservable();
   }
 
-  getTasks(): Task[] {
-    return this.tasksData;
+  public addTask(task: Task): void {
+    const tasks = [...this.tasksBehaviorSubject$.getValue(), task];
+    this.updateLocalStorage(tasks);
+    this.emitTasksValue(tasks);
   }
 
-  addTask(task: Task) {
-    this.index++;
-    this.storage.setItem(this.index.toString(), JSON.stringify(task));
-    this.tasksData.push(JSON.parse(this.storage.getItem(this.index.toString())));
+  public updateLocalStorage(tasks: Task[]): void {
+    this.winRef.localStorage.setItem(TASKS_LOCAL_STORAGE_KEY, JSON.stringify(tasks));
   }
 
-  clearTasks() {
-    this.storage.clear();
-    this.tasksData.length = 0;
+  private readLocalStorage(): Task[] {
+    return JSON.parse(this.winRef.localStorage.getItem(TASKS_LOCAL_STORAGE_KEY));
+  }
+
+  private emitTasksValue(tasks: Task[]) {
+    this.tasksBehaviorSubject$.next(tasks);
+  }
+
+  public clearTasks(): void {
+    const tasks = [...this.tasksBehaviorSubject$.getValue()];
+    tasks.length = 0;
+    this.emitTasksValue(tasks);
+    this.winRef.localStorage.removeItem(TASKS_LOCAL_STORAGE_KEY);
   }
 }

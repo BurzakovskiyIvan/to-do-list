@@ -5,6 +5,6 @@
 
   <div id="mainTaskBlock">
     <p id="taskDescription">{{ task.description }}</p>
-    <p id="taskDeadline">{{ task.endDate }}</p>
+    <p id="taskDeadline">{{ task.endDate | date:'shortDate' }}</p>
   </div>
 </div>

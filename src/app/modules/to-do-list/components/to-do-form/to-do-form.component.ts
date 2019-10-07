@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PriorityService } from '../../services/priority.service';
 import { TasksService } from '../../services/tasks.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Task } from '../../task';
+import { PRIORITIES } from '../../priorities';
 
 @Component({
   selector: 'app-to-do-form',
@@ -11,19 +10,10 @@ import { Task } from '../../task';
 })
 
 export class ToDoFormComponent implements OnInit {
-
-  // Reactive Form
-  rForm: FormGroup;
-  description: string;
-  endDate: Date;
-  priority: string;
-
-  priorities = [];
-  onAddTask: (task: Task) => any;
-  onClearTasks: () => void;
+  public rForm: FormGroup;
+  public priorities = [];
 
   constructor(
-    private priorityService: PriorityService,
     private taskService: TasksService,
     private formBuilder: FormBuilder
     ) {
@@ -36,12 +26,18 @@ export class ToDoFormComponent implements OnInit {
 
   ngOnInit() {
     this.getPriorities();
-    this.onAddTask = this.taskService.addTask.bind(this.taskService);
-    this.onClearTasks = this.taskService.clearTasks.bind(this.taskService);
   }
 
-  getPriorities(): void {
-    this.priorities = this.priorityService.getPriorities();
+  public onClearTasks(): void {
+    this.taskService.clearTasks();
+  }
+
+  public onAddTask(): void {
+    this.taskService.addTask(this.rForm.value);
+  }
+
+  private getPriorities(): void {
+    this.priorities = Object.keys(PRIORITIES);
   }
 
 }
