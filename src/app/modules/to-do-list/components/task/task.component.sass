@@ -1,4 +1,4 @@
-#taskWrapper
+.taskWrapper
   min-width: 200px
   max-width: 350px
   display: flex
@@ -8,25 +8,37 @@
   overflow: hidden
   margin-bottom: 15px
 
-  #priorityBlock
+  .priorityBlock
     display: flex
     justify-content: center
     align-items: center
     width: 20%
     min-width: 4em
 
-    #priorityValue
+    .priorityValue
       color: #ffffff
       margin: 0 10px 0 10px
 
-  #mainTaskBlock
+  .critical
+      background-color: #d62f22
+
+  .major
+      background-color: #c94b8a
+
+  .minor
+      background-color: #4a68bd
+
+  .trivial
+      background-color: #25703a
+
+  .mainTaskBlock
     padding: 5px 10px
 
-    #taskDescription
+    .taskDescription
       margin: 0 0 5px 0
       overflow-wrap: normal
 
-    #taskDeadline
+    .taskDeadline
       font-size: 0.8em
       margin: 0
       color: #7c7c7c

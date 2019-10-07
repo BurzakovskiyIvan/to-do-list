@@ -1,10 +1,12 @@
-<div id="taskWrapper" *ngFor="let task of tasks">
-  <div id="priorityBlock" [style.background-color]="getPriorityColor(task.priority)">
-    <p id="priorityValue">{{ task.priority }}</p>
+<div class="taskWrapper">
+
+  <div class="priorityBlock" [ngClass]="task.priority">
+    <p class="priorityValue">{{ task.priority }}</p>
   </div>
 
-  <div id="mainTaskBlock">
-    <p id="taskDescription">{{ task.description }}</p>
-    <p id="taskDeadline">{{ task.endDate | date:'shortDate' }}</p>
+  <div class="mainTaskBlock">
+    <p class="taskDescription">{{ task.description }}</p>
+    <p class="taskDeadline">{{ task.endDate | date:'shortDate' }}</p>
   </div>
+
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../../services/tasks.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PRIORITIES } from '../../priorities';
+import { PRIORITIES } from '../../constants/priorities';
 
 @Component({
   selector: 'app-to-do-form',
