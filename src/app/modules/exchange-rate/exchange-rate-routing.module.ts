@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ToDoPageComponent } from './components/to-do-page/to-do-page.component';
-
+import { GreetingPageComponent } from './components/greeting-page/greeting-page.component';
 
 const routes: Routes = [
-  { path: '', component: ToDoPageComponent },
+  { path: '', component: GreetingPageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ToDoListRoutingModule { }
+export class ExchangeRateRoutingModule { }
