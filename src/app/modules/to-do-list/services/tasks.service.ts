@@ -35,9 +35,7 @@ export class TasksService {
   }
 
   public clearTasks(): void {
-    const tasks = [...this.tasksBehaviorSubject$.getValue()];
-    tasks.length = 0;
-    this.emitTasksValue(tasks);
+    this.emitTasksValue([]);
     this.winRef.localStorage.removeItem(TASKS_LOCAL_STORAGE_KEY);
   }
 }
