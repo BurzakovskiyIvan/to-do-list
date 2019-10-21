@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GreetingPageComponent } from './components/greeting-page/greeting-page.component';
+import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 
 const routes: Routes = [
-  { path: '', component: GreetingPageComponent },
+  { path: '', component: ExchangeRateComponent },
 ];
 
 @NgModule({

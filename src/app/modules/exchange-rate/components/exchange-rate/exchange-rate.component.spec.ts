@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GreetingPageComponent } from './greeting-page.component';
+import { ExchangeRateComponent } from './exchange-rate.component';
 
 describe('GreetingPageComponent', () => {
-  let component: GreetingPageComponent;
-  let fixture: ComponentFixture<GreetingPageComponent>;
+  let component: ExchangeRateComponent;
+  let fixture: ComponentFixture<ExchangeRateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GreetingPageComponent ]
+      declarations: [ ExchangeRateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GreetingPageComponent);
+    fixture = TestBed.createComponent(ExchangeRateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
