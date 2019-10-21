@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
+import { ExchangeRatePageComponent } from './components/exchange-rate-page/exchange-rate-page.component';
 import { ExchangeRateRoutingModule } from './exchange-rate-routing.module';
-import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
-    ExchangeRateComponent
+    ExchangeRatePageComponent
   ],
   imports: [
     CommonModule,
-    ExchangeRateRoutingModule,
-    MatTableModule
+    ExchangeRateRoutingModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class ExchangeRateModule { }
