@@ -11,11 +11,11 @@ import '../../../../web-components/wc-exchange-rate';
 })
 export class ExchangeRatePageComponent implements OnInit {
 
-  public exchangeRateData$: ExchangeRate[];
+  public exchangeRateData: ExchangeRate[];
 
   constructor(private apiService: ApiService) {
     this.apiService.getExchangeRate().subscribe((data) => {
-      this.exchangeRateData$ = data;
+      this.exchangeRateData = data;
     });
   }
 
