@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private EXCHANGE_RATE_PB_URL = 'https://api.privatbank.ua/p24api/exchange_rates?json&date=01.12.2014';
+  private EXCHANGE_RATE_PB_URL = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5';
 
   constructor(
     private http: HttpClient

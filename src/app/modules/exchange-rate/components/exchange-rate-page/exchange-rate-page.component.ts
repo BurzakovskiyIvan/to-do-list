@@ -15,8 +15,7 @@ export class ExchangeRatePageComponent implements OnInit {
 
   constructor(private apiService: ApiService) {
     this.apiService.getExchangeRate().subscribe((data) => {
-      console.log(data);
-      this.exchangeRateData = data.exchangeRate;
+      this.exchangeRateData = data;
     });
   }
 

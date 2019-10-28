@@ -3,7 +3,7 @@ import { LitElement, html, property, customElement } from '@polymer/lit-element'
 @customElement('wc-exchange-rate')
 export class WebComponentsExchangeRate extends LitElement {
 
-  @property() exchangeRate: [];
+  @property( {type: Array}) exchangeRateData = JSON.parse(this.getAttribute('exchangeRateData'));
 
   render() {
     return html`
@@ -27,24 +27,33 @@ export class WebComponentsExchangeRate extends LitElement {
         }
       </style>
 
-      <table class="exchangeRateTable">
-        <caption class="title">National Bank's Exchange Rate (1 UAH)</caption>
+      ${
+        this.exchangeRateData ?
+          html`
+            <table class="exchangeRateTable">
+              <caption class="title">National Bank's Exchange Rate (1 UAH)</caption>
 
-        <thead>
-          <tr>
-            <th>Currency</td>
-            <th>Sale Rate</td>
-            <th>Purchase Rate</td>
-          </tr>
-        </thead>
+              <thead>
+                <tr>
+                  <th>Currency</td>
+                  <th>Purchase Rate</td>
+                  <th>Sale Rate</td>
+                </tr>
+              </thead>
 
-        <tbody>
-          <tr>
-            <td>USD</td>
-            <td>28.55</td>
-            <td>29.33</td>
-          </tr>
-        </tbody>
-      </table>`;
+              <tbody>
+
+                ${this.exchangeRateData.map(rate => html`
+                  <tr>
+                    <td>${rate.ccy}</td>
+                    <td>${rate.buy}</td>
+                    <td>${rate.sale}</td>
+                  </tr>
+                `)}
+
+              </tbody>
+            </table>`
+          : html``
+      }`;
   }
 }
