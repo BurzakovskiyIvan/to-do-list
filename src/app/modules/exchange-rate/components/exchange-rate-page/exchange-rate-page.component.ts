@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/modules/core/services/api.service';
+import { ApiService } from '../../../core/services/api.service';
 import { ExchangeRate } from '../../exchangeRate';
 
 import '../../../../web-components/wc-exchange-rate';
@@ -13,8 +13,10 @@ export class ExchangeRatePageComponent implements OnInit {
 
   public exchangeRateData: ExchangeRate[];
 
-  constructor(private apiService: ApiService) {
-    this.apiService.getExchangeRate().subscribe((data) => {
+  constructor(
+    private apiService: ApiService
+  ) {
+    this.apiService.getExchangeRate().subscribe(data => {
       this.exchangeRateData = data;
     });
   }
